@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="book_detail">
+    {% load static %} <img src="{% static book.cover_image.url %}" alt="Hi!" />
+    <img src="{{ book.cover_image.url }}" alt="...">
+    <p>{{book.cover_image}}</p>
     <h3> Title: {{book.title}}</h3>
     <p> Status{{book.status}}</p>
     <p> Author: {{book.author}}</p>

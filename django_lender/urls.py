@@ -16,11 +16,17 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib import admin
 from .views import home_view
+from django.conf import settings
+from django.conf.urls.static import static
 # from lender_books import urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
-    path('books/', include('lender_books.urls'))
-]
+    path('books/', include('lender_books.urls')),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),   
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
