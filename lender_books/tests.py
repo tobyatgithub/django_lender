@@ -8,9 +8,9 @@ class TestBookModel(TestCase):
     def setUp(self):
         """
         """
-        Book.objects.create(title="Feed the Cat", detail="She\'s hangry.")
-        Book.objects.create(title="Get the Groceries", detail="We have none.")
-        Book.objects.create(title="Art of Diper Change", detail="It's stanky.", status="In Stock")
+        Book.objects.create(title="Feed the Cat", author="She\'s hangry.", year=2000)
+        Book.objects.create(title="Get the Groceries", author="We have none.", year=1994)
+        Book.objects.create(title="Art of Diper Change", author="It's stanky.", year=2020 , status="checked-out")
 
     def test_book_titles(self):
         """
@@ -22,18 +22,18 @@ class TestBookModel(TestCase):
         """
         """
         books = Book.objects.all()
-        self.assertEqual(books[1].detail, "We have none.")
+        self.assertEqual(books[1].author, "We have none.")
 
     def test_book_descriptions2(self):
         """
         """
         one = Book.objects.get(title="Art of Diper Change")
-        self.assertEqual(one.status, "In Stock")
+        self.assertEqual(one.status, "checked-out")
 
     def test_create_new_book(self):
         """
         """
-        new_book = Book.objects.create(title="New", detail="")
+        new_book = Book.objects.create(title="New", detail="", year=1998)
         self.assertEqual(new_book.title, "New")
         # pass
 
@@ -45,9 +45,9 @@ class TestBookViews(TestCase):
         """
         """
         self.request = RequestFactory()
-        self.note = Book.objects.create(title="Feed the Cat", detail="She\'s hangry.")
-        self.note1 = Book.objects.create(title="Get the Groceries", detail="We have none.")
-        Book.objects.create(title="Art of Diper Change", detail="It's stanky.", status="In Stock")
+        self.note = Book.objects.create(title="Feed the Cat", author="She\'s hangry.", year=2000)
+        self.note1 = Book.objects.create(title="Get the Groceries", author="We have none.", year=1994)
+        Book.objects.create(title="Art of Diper Change", author="It's stanky.", year=2020 , status="checked-out")
 
     def test_list_view_contest(self):
         """
@@ -61,10 +61,10 @@ class TestBookViews(TestCase):
     def test_list_view_status(self):
         """
         """
-        from .view import book_list_view
+        from .views import book_list_view
         request = self.request.get('')
         response = book_list_view(request)
-        self.assertIn(200, response.status_code)        
+        self.assertEqual(200, response.status_code)        
 
     def test_detail_view_content(self):
         """
