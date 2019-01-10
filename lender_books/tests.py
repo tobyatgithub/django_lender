@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
+from django.core import mail
 from .models import Book
-
 
 class TestBookModel(TestCase):
     """

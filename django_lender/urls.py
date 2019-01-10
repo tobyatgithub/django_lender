@@ -26,7 +26,8 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('books/', include('lender_books.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
-    path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),   
-] 
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

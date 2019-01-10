@@ -1,11 +1,14 @@
 from django.db import models
+# from django.utils import timezone
+# from django.dispatch import receiver
+# from django.contrib.auth.models import User
 
 
 # Create your models here.
 class Book(models.Model):
     """
     """
-    cover_image = models.ImageField(upload_to='image', default='no-img.jpg')
+    cover_image = models.ImageField(upload_to='media', default='no-img.jpg')
     title = models.CharField(max_length=128)
     author = models.CharField(max_length=50)
     detail = models.CharField(max_length=128)
@@ -24,3 +27,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.author})'
+
+# @receiver(models.signals.post_save, sender=Book)
+# def set_book_returned_date(sender, instance, **kwargs):
