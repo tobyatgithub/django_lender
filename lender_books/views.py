@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Book
 
 
+@login_required
 def book_detail_view(request, primary_key=None):
     """
     """
@@ -12,6 +14,7 @@ def book_detail_view(request, primary_key=None):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required
 def book_list_view(request):
     """
     """

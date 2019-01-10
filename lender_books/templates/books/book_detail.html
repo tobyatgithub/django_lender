@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="book_detail">
+    <img src="{{ book.cover_image.url }}" alt="book cover image">
     <h3> Title: {{book.title}}</h3>
     <p> Status{{book.status}}</p>
     <p> Author: {{book.author}}</p>
