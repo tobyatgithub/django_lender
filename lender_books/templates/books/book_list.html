@@ -3,9 +3,21 @@
 {% block title %}Book List Page{% endblock title %}
 
 {% block content %}
-<div class="book_list">
+<br>
+<div class='welcome center1'>
+    <h2>Hi {{ user.get_username }}, Welcome to the book list page!</h2>
+</div>
+
+<br>
+<div class="center">
+    <p>Here're some amazing books in our library.</p>
+    <p>Any book that ends with a symbol (A) is available for checkout.</p>
+</div>
+<br>
+<div class="book_list center">
     {% for book in books %}
         <h3><a href="{% url 'book_detail' primary_key=book.id %}">{{ book.title}}, {{ book.author }} ({{ book.status }}) </a></h3>
+        <img src="{{ book.cover_image.url }}" alt="book cover image">
     {% endfor %}
 </div>
 {% endblock content %}

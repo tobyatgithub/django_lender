@@ -18,7 +18,6 @@ from django.contrib import admin
 from .views import home_view
 from django.conf import settings
 from django.conf.urls.static import static
-# from lender_books import urls
 
 
 urlpatterns = [

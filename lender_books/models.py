@@ -19,8 +19,8 @@ class Book(models.Model):
         ('O', 'checked-out'),
     ]
     status = models.CharField(max_length=50, default='available', choices=STATES)
-    date_added = models.DateField(auto_now_add=True)
-    last_borrowed = models.DateField(auto_now=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    last_borrowed = models.DateTimeField(auto_now=True)
 
     def __repr__(self):
         return f'{self.title} ({self.author})'
