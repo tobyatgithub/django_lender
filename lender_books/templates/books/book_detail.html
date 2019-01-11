@@ -1,5 +1,6 @@
 {% extends "generic/base.html" %}
-
+{% load extras %}
+{% load tz %}
 {% block title %}Detail{% endblock title %}
 
 {% block content %}
@@ -12,6 +13,7 @@
     <!--
     -->
     <p> Date Added: {{book.date_added}}</p>
+    <p> Date Added day: {{ book.date_added | get_date_string }}</p>
     <p> Last Borrowed: {{book.last_borrowed}}</p>
 </div>
 {% endblock content %}
