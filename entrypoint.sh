@@ -5,7 +5,7 @@ set -e
 cd /src
 
 # python3 manage.py test -v 2 && \
-coverage run --source='.' manage.py test
+coverage run --source='.' manage.py test -v 1
 coverage report
 python3 manage.py collectstatic --noinput
 python3 manage.py makemigrations --noinput  # flask migrate

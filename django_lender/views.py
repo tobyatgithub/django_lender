@@ -6,4 +6,4 @@ from django.contrib.auth.decorators import login_required
 def home_view(request):
     """
     """
-    return render(request, 'generic/home.html', {'message': 'Greetings Book Lovers!'})
+    return render(request, 'generic/home.html', {'message': 'I know you are a Book Lover!'})

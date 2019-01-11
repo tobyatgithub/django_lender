@@ -1,17 +1,28 @@
 {% extends "generic/base.html" %}
-
+{% load extras %}
+{% load tz %}
 {% block title %}Detail{% endblock title %}
 
 {% block content %}
-<div class="book_detail">
+<br>
+<div class='welcome center1'>
+    <h2>Hi {{ user.get_username }}, Here's the detailed book information!</h2>
+</div>
+
+<br>
+<div class="book_detail center">
+    <h3> {{book.title}}</h3>
+    <p> {{book.year}}, {{book.author}}</p>
     <img src="{{ book.cover_image.url }}" alt="book cover image">
-    <h3> Title: {{book.title}}</h3>
-    <p> Status{{book.status}}</p>
-    <p> Author: {{book.author}}</p>
-    <p> Year: {{book.year}}</p>
+    {% if book.status == "A" %}
+        <p> The book is <strong>available</strong> right now.</p>
+    {% else %}
+        <p> The book is <strong>NOT available</strong> right now.</p>
+    {% endif %}
     <!--
     -->
-    <p> Date Added: {{book.date_added}}</p>
     <p> Last Borrowed: {{book.last_borrowed}}</p>
+    <p> Date Added to Library: {{book.date_added}}</p>
+    <p> Date Added day: {{ book.date_added|get_date_string }}</p>
 </div>
 {% endblock content %}

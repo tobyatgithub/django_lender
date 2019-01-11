@@ -3,6 +3,15 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<h2>Welcome to the home page!</h2>
-<p>{{ message }}</p>
+<br>
+<div class='welcome center1'>
+    <h2>Hi {{ user.get_username }}, Welcome to the home page!</h2>
+</div>
+
+<br>
+<div class='center'>
+    <p>{{ message }}</p>
+    <p>Go to Book List page to find out what book is available 
+        for check out.</p>
+</div>
 {% endblock content %}
