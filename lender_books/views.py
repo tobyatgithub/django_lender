@@ -6,6 +6,8 @@ from .models import Book
 @login_required
 def book_detail_view(request, primary_key=None):
     """
+    Here we define the detailed view controller. 
+    i.e. the detail view will use the comment in context to grab data.
     """
     context = {
         # 'book': Book.query.get(primary_key)
@@ -17,6 +19,8 @@ def book_detail_view(request, primary_key=None):
 @login_required
 def book_list_view(request):
     """
+    Here we define the list view controller.
+    i.e. the list view will use the comment in context to grab data.
     """
     context = {
         # 'books': Book.query.all()
