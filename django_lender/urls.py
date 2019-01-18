@@ -29,4 +29,5 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.one_step.urls')),
 ]
 
+# be careful if you use urlpatterns = [...] + static(...) the app will fail.
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
